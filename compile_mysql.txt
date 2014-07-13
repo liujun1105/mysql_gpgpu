@@ -1,0 +1,34 @@
+@echo off
+
+echo MYSQL HOME [%MYSQL_HOME%]
+echo MYSQL DUMP [%MYSQL_DUMP%]
+echo MYSQL SOURCE HOME [%MYSQL_SOURCE_HOME%]
+
+rem %MYSQL_DUMP%\MySQL_Build
+set BUILD_OPTIONS=
+
+rem set whether in debug mode
+set BUILD_OPTIONS=%BUILD_OPTIONS% -DWITH_DEBUG=1 
+rem set the installation location
+set BUILD_OPTIONS=%BUILD_OPTIONS% -DCMAKE_INSTALL_PREFIX=%MYSQL_DUMP%\MYSQL 
+rem enable InnoDB storage engine
+set BUILD_OPTIONS=%BUILD_OPTIONS% -DWITH_INNOBASE_STORAGE_ENGINE=1 
+rem enable Federated storage engine
+set BUILD_OPTIONS=%BUILD_OPTIONS% -DWITH_FEDERATED_STORAGE_ENGINE=1 
+rem enable Partition storage engine
+set BUILD_OPTIONS=%BUILD_OPTIONS% -DWITH_PARTITION_STORAGE_ENGINE=1 
+rem enable Performance Schema engine
+set BUILD_OPTIONS=%BUILD_OPTIONS% -DWITH_PERFSCHEMA_STORAGE_ENGINE=1 
+
+rem set up MySQL data directory
+rem set BUILD_OPTIONS=%BUILD_OPTIONS% -DMYSQL_DATADIR=exp_data
+rem set up MySQL configuration file location
+rem set BUILD_OPTIONS=%BUILD_OPTIONS% -DSYSCONFDIR=%MYSQL_DUMP%
+rem plugin directory
+rem set BUILD_OPTIONS=%BUILD_OPTIONS% -DINSTALL_PLUGINDIR=exp_plugin 
+
+echo BUILD_OPTIONS [%BUILD_OPTIONS%]
+
+cmake %BUILD_OPTIONS% %MYSQL_SOURCE_HOME% 
+@echo on
+pause

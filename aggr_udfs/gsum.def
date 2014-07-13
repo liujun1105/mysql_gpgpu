@@ -1,0 +1,5 @@
+EXPORTS
+  gsum
+  gsum_init
+  gsum_deinit
+  

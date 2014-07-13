@@ -1,0 +1,7 @@
+EXPORTS
+  aggr_udf_sum
+  aggr_udf_sum_init
+  aggr_udf_sum_deinit
+  aggr_udf_sum_add
+  aggr_udf_sum_clear
+  sql_alloc

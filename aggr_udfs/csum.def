@@ -1,0 +1,4 @@
+EXPORTS
+  csum
+  csum_init
+  csum_deinit  
